@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>script-engine</artifactId>
+        <groupId>com.ericsson.oss.services.cm</groupId>
+        <version>1.9.76-SNAPSHOT</version>
+    </parent>
+    <artifactId>script-engine-ejb</artifactId>
+    <packaging>ejb</packaging>
+    <name>[${project.parent.artifactId}] EJB module</name>
+    <properties>
+        <version.maven-ejb-plugin>2.3</version.maven-ejb-plugin>
+    </properties>
+    <build>
+        <!-- DO NOT DELETE RESOURCE FILTERING. FILTERING IS REQUIRED BY SERVICE 
+			FRAMEWORK. YOU CAN EXCLUDE FILES YOU DO NOT WANT TO BE FILTERED. -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${version.maven-ejb-plugin}</version>
+                <configuration>
+                    <ejbVersion>${version.ejb}</ejbVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.parent.artifactId}-api</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.parent.artifactId}-editor-spi</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- cm-common-log required for Error Logging  -->
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-common-log</artifactId>
+            <version>${version.cm-common}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-common-event-handling</artifactId>
+            <version>${version.cm-common}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-writer-api</artifactId>
+            <version>${version.cm-writer}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-reader-api</artifactId>
+            <version>${version.cm-reader}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cli.alias.model</groupId>
+            <artifactId>clialias-jar</artifactId>
+            <version>${version.clialias-models}</version>
+        </dependency>
+        <!-- Service framework as a module -->
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>service-framework-dist</artifactId>
+        </dependency>
+        <!-- SDK Recording API needed for compilation -->
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-recording-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-tracing-api</artifactId>
+            <scope>provided</scope>
+            <!-- no need to specify version if imported Service Framework JBoss BOM -->
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-cache-api</artifactId>
+            <scope>provided</scope>
+            <!-- no need to specify version if imported Service Framework JBoss BOM -->
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-cluster-core</artifactId>
+            <version>${version.service.framework}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-resources-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- sdk-instrumentation-api is required for Profile Annotation-->
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-instrumentation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

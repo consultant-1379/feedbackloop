@@ -1,0 +1,84 @@
+File Download Example
+
+     On successful command execution the application returns a response containing an application specific 
+     file id identifying the file to be downloaded. Successful command execution indicates that file identified 
+     by the returned file id is created and available for download.
+
++------+
+import com.ericsson.oss.services.scriptengine.spi.CommandHandler;
+import com.ericsson.oss.services.scriptengine.spi.dtos.Command;
+import com.ericsson.oss.services.scriptengine.spi.dtos.CommandResponseDto;
+import com.ericsson.oss.services.scriptengine.spi.dtos.file.FileDownloadRequestDto;
+
+@Stateless
+@EServiceQualifier("myAppId")  
+public class CommandHandlerImpl implements CommandHandler {
+    
+    @Override
+    public CommandResponseDto execute(final Command cmd) {
+        final FileDownloadRequestDto fileDownloadRequest = new FileDownloadRequestDto("myAppId", "myFileId")
+        final CommandResponseDto cmdResponse = new CommandResponseDto();
+        cmdResponse.setStatusCode(CommandResponseDto.SUCCESS);
+        cmdResponse.setCommandResultDto(fileDownloadRequest);
+        return cmdResponse;
+    }
+}
+
++------+
+
+
+    The response will initiate a file download request which will be routed to the application containing the id of the
+    file to be downloaded. The application then has the option of either downloading the file from the filesystem
+    or from in-memory.
+
+
+
+    Download a file from the filesystem.
+    
+    
++------+
+
+import javax.ejb.Stateless;
+
+import com.ericsson.oss.itpf.sdk.core.annotation.EServiceQualifier;
+import com.ericsson.oss.services.scriptengine.spi.FileDownloadHandler;
+import com.ericsson.oss.services.scriptengine.spi.dtos.file.FileDownloadResponseDto;
+import com.ericsson.oss.services.scriptengine.spi.dtos.file.FileSystemLocatedFileDto;
+
+@Stateless
+@EServiceQualifier("myAppId")  
+public class FileDownloadHandlerImpl implements FileDownloadHandler {
+
+    @Override
+    public FileDownloadResponseDto execute(final String fileId) {
+        final FileDownloadResponseDto response =  new FileSystemLocatedFileDto("/tmp/myFile.xml", "myFileName", "application/xml");
+        return response;
+    }
+}
+
++------+
+
+
+    Download a file from in-memory.
+    
+
++------+
+
+import com.ericsson.oss.itpf.sdk.core.annotation.EServiceQualifier;
+import com.ericsson.oss.services.scriptengine.spi.FileDownloadHandler;
+import com.ericsson.oss.services.scriptengine.spi.dtos.file.FileDownloadResponseDto;
+import com.ericsson.oss.services.scriptengine.spi.dtos.file.InMemoryFileDto;
+
+@Stateless
+@EServiceQualifier("myAppId")  
+public class FileDownloadHandlerImpl implements FileDownloadHandler {
+
+    @Override
+    public FileDownloadResponseDto execute(final String fileId) {
+        final String myFileContents = "hello";
+        final FileDownloadResponseDto response =  new InMemoryFileDto(myFileContents.getBytes(), "myFileName", "text/plain");
+        return response;
+    }
+}
+
++------+

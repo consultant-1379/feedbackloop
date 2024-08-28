@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>script-engine</artifactId>
+        <groupId>com.ericsson.oss.services.cm</groupId>
+        <version>1.9.76-SNAPSHOT</version>
+    </parent>
+    <artifactId>ERICscripteng_CXP9030314</artifactId>
+    <packaging>${rpm.packaging}</packaging>
+    <properties>
+        <com.ericsson.oss.rpm.architecture>noarch</com.ericsson.oss.rpm.architecture>
+        <rpm-root>opt</rpm-root>
+        <comp-name>ericsson</comp-name>
+        <install-path>${project.groupId}</install-path>
+        <publish_artifact>true</publish_artifact>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.parent.artifactId}-ear</artifactId>
+            <type>ear</type>
+        </dependency>
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--needed for TORF-34847 to install rpm to known location from KVM-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>rpm-maven-plugin</artifactId>
+                    <configuration>
+                        <mappings>
+                            <mapping>
+                                <directory>${vm.install-path}</directory>
+                                <filemode>500</filemode>
+                                <username>${jboss-username} </username>
+                                <groupname>${jboss-groupname}</groupname>
+                                <dependency>
+                                    <includes>
+                                        <include>${project.groupId}:${project.parent.artifactId}-ear</include>
+                                    </includes>
+                                </dependency>
+                            </mapping>
+                        </mappings>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

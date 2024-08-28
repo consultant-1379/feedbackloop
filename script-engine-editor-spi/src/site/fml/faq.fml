@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs id="FAQ" title="Common ScriptEngine SPI FAQs">
+  <part id="General">
+    <faq id="question1">
+      <question>What dependencies does ScriptEngine SPI have?</question>
+      <answer>
+        <p>
+        	See here <a href="./getting_started/required_dependencies.html">Required Dependencies</a>
+        </p>
+      </answer>
+    </faq>
+    <faq id="question2">
+      <question>Do you have some code examples?</question>
+      <answer>
+        <p>
+        	Yes! <a href="./code_examples/index.html">Loads...</a>
+        </p>
+      </answer>
+    </faq>
+    <faq id="question3">
+      <question>What do the different status codes (<i>statusCode</i>) stand for?</question>
+      <answer>
+        <p>
+        	<ul>
+        	<li>>0 = Success (# items in response)</li>
+        	<li> 0 = Success (no data)</li>
+        	<li>-1 = Execution Error  (business logic, rule broken)</li>
+        	<li>-2 = Unexpected Error (unhandled exception)</li>
+        	<li>-3 = Command Syntax Error</li>
+        	</ul>
+        </p>
+      </answer>
+    </faq>
+    <faq id="question999">
+      <question>How do I log a bug?</question>
+      <answer>
+        <p>
+        	See here <a href="./how_to_log_a_bug_in_jira.html">How to log a bug in jira</a>
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>

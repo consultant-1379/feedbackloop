@@ -1,0 +1,15 @@
+	------
+	How to log a bug in Jira
+	------
+
+How to log a bug in Jira
+
+
+		A Jira should be issued under TOR Project (TORF) on the CM Editor Backlog {{{http://jira-oss.lmera.ericsson.se/secure/RapidBoard.jspa?rapidView=714&view=planning.html} TOR CM backlog jira link}}. 
+		When reporting a bug the field "Component" should be set to "CM Editor", please see that below screenshot for a same Jira.
+		
+[./images/sampleJira.png]] Sample Jira   
+
+
+
+		

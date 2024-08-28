@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs xmlns="http://maven.apache.org/FML/1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/FML/1.0.1 http://maven.apache.org/xsd/fml-1.0.1.xsd"
+	title="Glossary of terms used in CM Reader and CM Writer" toplink="false">
+
+	<part id="C">
+		<title>C</title>
+		<faq id="CLI">
+			<question>
+				CLI - Command Line Interface
+			</question>
+			<answer>
+				<p>
+					The presentation level component that allows a user to enter commands.
+				</p>
+			</answer>
+		</faq>
+	</part>
+	<part id="S">
+		<title>S</title>
+		<faq id="SPI">
+			<question>
+				SPI - Service Provider Interface
+			</question>
+			<answer>
+				<p>
+					Service Provider Interface is an API intended to be implemented or extended by a third party. It can be used to enable framework extension and replaceable components..  
+				</p>
+			</answer>
+		</faq>
+	</part>	
+</faqs>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+	<engine>
+		<property name="deploymentExportPath">target/arquillian</property>
+	</engine>
+	<container qualifier="jboss_managed" default="false">
+		<configuration>
+			<property name="jbossHome">${jboss.home}</property>
+			<property name="startupTimeoutInSeconds">120</property>
+			<property name="serverConfig">standalone-full.xml</property>
+			<property name="managementPort">9999</property>
+			<property name="javaVmArguments">-Xmx768m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dericsson-model-service-root=${modelRoot} -DXML_REPO_PATH=${xmlRepo} -Dcom.ericsson.oss.sdk.node.identifier=jboss1 -Dsfwk.healthcheck.udp.mcast_addr=239.6.6.1 -Dsfwk.healthcheck.udp.mcast_port=35661 -Dsfwk.upgrade.udp.mcast_addr=239.6.6.2 -Dsfwk.upgrade.udp.mcast_port=35662 -Dsfwk.config.property.change.notifications.udp.mcast_addr=239.6.6.3 -Dsfwk.config.udp.mcast_addr=239.6.6.4 -Dsfwk.eservice.udp.mcast_addr=239.6.6.5 -Dsfwk.service.availability.udp.mcast_addr=239.6.6.6 -Ddps.udp.mcast_addr=239.6.6.7 -Ddps.udp.mcast_port=35663 -Ddps.udp.bind_port=35664 -Ddps.udp.start_port=35665 -Dsdk.jgroups.distributed.udp.mcast_addr=239.6.6.8 -Dcom.ericsson.oss.itpf.sdk.cache.persistence.location.absolute.path=${basedir}/target/cache-persistence</property>
+		</configuration>
+	</container>
+	<container qualifier="jboss_remote" default="true">
+		<configuration>
+			<property name="jbossHome">${env.JBOSS_HOME}</property>
+		</configuration>
+	</container>
+	
+</arquillian>

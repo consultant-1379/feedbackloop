@@ -1,0 +1,49 @@
+Implementing the interface
+
+	Below example shows a basic CommandHandler Implementation for the 'myAppId' command handler. There is no logic for checking the actual command
+	but it should give a basic idea how to get started, create a response and how to handle errors  
+
++------+
+
+@Stateless
+@EServiceQualifier("myAppId")
+public class CommandHandlerImplExample implements CommandHandler {
+
+    @Override
+    public CommandResponseDto execute(final Command command) {
+        CommandResponseDto commandResponseDto = null;
+        try {
+            commandResponseDto = new CommandResponseDto();
+            // Indicate successful response by setting status code
+            commandResponseDto.setStatusCode(CommandResponseDto.SUCCESS);
+            // Get the data...
+            final AbstractDto dto = getSomeData();
+            // Add it to the response
+            commandResponseDto.setCommandResultDto(dto);
+        } catch (final Throwable t) {
+            commandResponseDto = new CommandResponseDto();
+            handleError(commandResponseDto, t);
+        }
+        // Always return the original command String in the response:
+        commandResponseDto.setCommand(command.toString());
+        return commandResponseDto;
+
+    }
+
+    private AbstractDto getSomeData() {
+        final ListDto dto = new ListDto();
+        dto.addDto(dto);
+        // Just a empty list for this example, in reality you would populate it here with whatever you require of course...
+        return dto;
+    }
+
+    private void handleError(final CommandResponseDto commandResponseDto, final Throwable t) {
+        commandResponseDto.setStatusCode(CommandResponseDto.UNEXPECTED_ERROR);
+        commandResponseDto.setStatusMessage("Unexpected Error");
+        commandResponseDto.setErrorCode(9999);
+        commandResponseDto.setSolution("Please check logs for more information about this error and contact customer support");
+    }
+}
+	
++------+
+

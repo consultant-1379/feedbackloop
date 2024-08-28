@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>script-engine</artifactId>
+        <groupId>com.ericsson.oss.services.cm</groupId>
+        <version>1.0.276-SNAPSHOT</version>
+    </parent>
+    <artifactId>script-engine-jar</artifactId>
+    <packaging>jar</packaging>
+    <name>[${project.parent.artifactId}] JAR module</name>
+    <build>
+        <finalName>${project.parent.artifactId}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>${version.jboss-as-maven-plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.parent.artifactId}-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-editor-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.services.cm</groupId>
+            <artifactId>cm-editor-jar</artifactId>
+        </dependency>
+    </dependencies>
+</project>

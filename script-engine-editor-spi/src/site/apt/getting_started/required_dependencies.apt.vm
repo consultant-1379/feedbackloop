@@ -1,0 +1,30 @@
+	------
+	Required Dependencies
+	------
+
+Required Dependencies
+
+* Maven dependencies
+
+		Define the version of each artifact in the properties section of the (parent) pom.xml like so
+
++--------------------------------------------------------------------------------------------------+
+
+		<properties>
+		      <version.script-engine>version_of_scriptEngine_spi_to_use</version.script-engine>
+		</properties>		
+  
++--------------------------------------------------------------------------------------------------+
+
+		Add the following dependency to the relevant pom/s in order to add ScriptEngine SPI
+
++--------------------------------------------------------------------------------------------------+
+
+		<dependency>
+			<groupId>com.ericsson.oss.services.cm</groupId>
+			<artifactId>script-engine-editor-spi</artifactId>
+			<version>${version.script-engine}</version>
+		</dependency>
+		
++--------------------------------------------------------------------------------------------------+
+

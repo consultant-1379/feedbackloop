@@ -1,0 +1,18 @@
+ScriptEngine SPI
+		
+Why use ScriptEngine SPI
+	
+	By implementing ScriptEngine SPI you easily provide a standardized common Command Line Interface to your application.
+	A matching UI interface is also provided.
+	
+	ScriptEngine SPI provides an automated 'routing' interface to your JBOSS service. 
+	
+	ScriptEngine SPI provides generic DTOs for transferring any type of data to the UI.
+	
+	ScriptEngine SPI provides standard error handling and logging.
+	
+		
+	For information about the required dependencies of the ScriptEngine SPI please check {{{.//getting_started/required_dependencies.html}required dependencies}}.
+	
+	
+	
